@@ -10,7 +10,6 @@ test('should call original logic only once and return cached value', () => {
 	};
 
 	const wrappedFunc = firework(func);
-
 	const result2 = wrappedFunc();
 
 	assert.is(result2, 1, 'Second call should return the cached result (1)');
@@ -45,4 +44,12 @@ test('should show call counts', () => {
 	assert.match(firework.fired(func).toString(), '3')
 })
 
+test('should execute with maxCalls', () => {
+	const expFunc = (a: number, b: number) => a + b
+	const func = firework(expFunc, { fireShots: 2 });
+	func(5, 5); // 10
+	const res = func(2, 2); // 4
+
+	assert.is(res, 4, 'Should return the correct result for the second call (4)');
+})
 test.run();

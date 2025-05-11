@@ -1,12 +1,10 @@
 import mimicFunction from "mimic-function";
 
-
-
 type AnyFunction = (...args: any[]) => any;
 
-// TODO: add more options
 interface FireworkOptions {
     throwOnMaxCalls?: boolean;
+    fireShots?: number;
 }
 
 interface FireworkFactory {
@@ -23,7 +21,7 @@ const firework = (<T extends AnyFunction>(function_: T, options: FireworkOptions
 
     let originalFunction: T | undefined = function_;
     let returnValue: ReturnType<T>;
-    let fireCount: number = 0;
+    let fireCount = 0;
     const functionName = function_.name || '<anonymous>';
 
     const fireworkFunction = (...args_: Parameters<T>): ReturnType<T> => {
@@ -54,5 +52,6 @@ firework.fired = (wrappedFunction: AnyFunction): number => {
     }
     return calledFunction.get(wrappedFunction)!;
 };
+
 
 export default firework;
