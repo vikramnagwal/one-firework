@@ -1,33 +1,23 @@
 {
   "name": "one-firework",
+  "version": "0.0.5",
   "description": "A library for singal use function execution.",
   "license": "MIT",
-  "module": {
-    "main": "dist/index.js",
-    "types": "dist/index.d.ts",
-    "files": [
-      "dist"
-    ]
-  },
+  "homepage": "https://onefirework.vercel.app/",
+  "repository": "https://github.com/vikramnagwal/one-firework",
   "type": "module",
-  "private": false,
-  "version": "0.0.1",
   "author": {
     "name": "Vikram Singh",
     "email": "vikramnagwal@gmail.com"
   },
   "scripts": {
-    "build": "bun build index.ts --outdir ./dist --splitting --format esm",
+    "build": "bun build index.ts --outdir ./dist --format esm && tsc --emitDeclarationOnly --outDir ./dist",
     "test": "bun run firework.test.ts",
     "prepublishOnly": "bun run build"
   },
   "devDependencies": {
     "@types/bun": "latest",
-    "typescript": "^5",
     "uvu": "^0.5.6"
-  },
-  "peerDependencies": {
-    "typescript": "^5"
   },
   "dependencies": {
     "mimic-function": "^5.0.1"
@@ -35,26 +25,20 @@
   "keywords": [
     "once",
     "single execution",
-    "function wrapper",
-    "javascript utility",
     "run once",
     "only once",
     "execution guard",
-    "type-safe",
-    "bun",
-    "nodejs",
-    "npm utility",
     "side-effect control",
     "fire-and-forget",
-    "init function",
     "firework",
     "single",
     "function execution controller",
     "function execution guard",
     "prevent",
-    "once execution",
-    "execution",
-    "one"
+    "solo",
+    "singleton",
+    "singleton function",
+    "one execution"
   ],
   "files": [
     "dist",
